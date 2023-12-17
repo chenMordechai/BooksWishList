@@ -1,0 +1,32 @@
+.book-index {
+    /* width: 600px; */
+    background-color: var(--clr1bg);
+    padding: 40px;
+
+    display: flex;
+    /* align-items: start; */
+    gap: 40px;
+}
+
+.book-index .preview-container {
+    display: flex;
+    align-items: center;
+}
+
+.book-index .preview-container button {
+    border: none;
+    background-color: unset;
+    font-size: 1.5em;
+}
+
+.book-index .wish-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* height: 100%; */
+    align-items: end;
+}
+
+.book-index .wish-list-container h2 {
+    font-weight: 700;
+}

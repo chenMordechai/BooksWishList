@@ -1,0 +1,26 @@
+.book-wish-list {
+    min-width: 200px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.book-wish-list ul {
+    width: max-content;
+}
+
+.book-wish-list ul li {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    background-color: var(--gray1);
+    margin-bottom: 10px;
+    padding: 8px;
+    border-left: 7px solid var(--clr2bg);
+    min-width: 200px;
+}
+
+.book-wish-list ul li button {
+    border: none;
+    color: white;
+    background-color: var(--gray2);
+}

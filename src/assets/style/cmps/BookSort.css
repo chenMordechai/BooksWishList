@@ -1,0 +1,20 @@
+.book-sort {
+    /* background-color: var(--gray1); */
+    /* padding: 20px; */
+    margin-bottom: 20px;
+    display: flex;
+    gap: 1px;
+    width: 200px;
+}
+
+.book-sort button {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    color: var(--clr1);
+}
+
+.book-sort button.active {
+    background-color: var(--clr1);
+    color: white;
+}

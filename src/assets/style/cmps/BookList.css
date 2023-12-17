@@ -1,0 +1,14 @@
+.book-list {
+    background-color: var(--clr1bg-light);
+    /* width: 40%; */
+}
+
+.book-list ul {
+    list-style: none;
+    width: max-content;
+}
+
+.book-list ul li {
+    display: flex;
+    justify-content: space-between;
+}

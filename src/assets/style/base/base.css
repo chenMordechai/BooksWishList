@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+}
+
+body {
+    margin: 0;
+    color: var(--gray3);
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: system-ui;
+    font-weight: 200;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: 1.1em;
+}
+
+h3 {
+    font-size: 1em;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+/* Dont stretch my Media */
+img,
+embed,
+video,
+object {
+    max-width: 100%;
+}
+
+/* Simple and useful CSS Debugging Technique */
+.debug * {
+    outline: 1px solid gold;
+}
+
+a.active {
+    text-decoration: overline;
+}
+
+button {
+    cursor: pointer;
+}
+
+.blue {
+    color: var(--clr1);
+}

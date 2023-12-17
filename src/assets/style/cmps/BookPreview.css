@@ -1,0 +1,27 @@
+.book-preview {
+    background-color: var(--gray1);
+    padding: 20px;
+    max-width: 300px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5em;
+}
+
+.book-index h2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-preview hr {
+    width: 100%;
+}
+
+.book-preview p.description {
+    height: 115px;
+    overflow-y: auto;
+}
+
+.book-preview p:last-child {
+    margin: 0;
+}
