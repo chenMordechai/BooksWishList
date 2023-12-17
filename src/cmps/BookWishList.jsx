@@ -1,16 +1,16 @@
-import {LongTxt} from './LongTxt.jsx'
+import { LongTxt } from './LongTxt.jsx'
 
-export function BookWishList({books, onRemoveFromWishList}) {
-    if(!books) return ''
+export function BookWishList({ books, onRemoveFromWishList }) {
+    if (!books) return ''
     return (
         <section className="book-wish-list">
             <ul>
-                {books.map((book,i)=><li key={book._id}>
+                {books.map((book, i) => <li key={book._id}>
                     <LongTxt txt={book.title} />
-                    <button onClick={()=>{
+                    <button onClick={() => {
                         onRemoveFromWishList(book._id)
                     }}>X</button>
-                    </li>)}
+                </li>)}
             </ul>
         </section>
     )

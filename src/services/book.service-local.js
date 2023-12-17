@@ -7,9 +7,6 @@ const PAGE_SIZE = 1
 export const bookService = {
     query,
     getById,
-    save,
-    remove,
-    getEmptyBook,
     getDefaultFilter,
     getDefaultSort,
     queryWishList,
@@ -18,7 +15,7 @@ export const bookService = {
 }
 
 
-function query(filterBy = {}, sortBy = {}) {
+function query(filterBy = {}) {
     return storageService.query(STORAGE_KEY)
         .then(books => {
                 const booksData ={
@@ -26,39 +23,10 @@ function query(filterBy = {}, sortBy = {}) {
                     booksToDisplay:[],
                     pageCount:0
                 }
-            let booksToDisplay = books.slice()
-            // if (filterBy.name) {
-            //     const regExp = new RegExp(filterBy.name, 'i')
-            //     booksToDisplay = booksToDisplay.filter(t => regExp.test(t.name))
-            // }
-
-            // if (filterBy.price) {
-            //     booksToDisplay = booksToDisplay.filter(t => t.price <= filterBy.price)
-            // }
-
-            // if (filterBy.inStock !== 'all') {
-            //     booksToDisplay = booksToDisplay.filter(t => t.inStock && filterBy.inStock === 'inStock'
-            //         || !t.inStock && filterBy.inStock === 'notInStock')
-            // }
-
-            // if (filterBy.labels.length !== 0) {
-            //     booksToDisplay = booksToDisplay.filter(t => {
-            //         return filterBy.labels.every(l => {
-            //             return t.labels.includes(l)
-            //         })
-            //     })
-            // }
-
-            // if (sortBy.type) {
-            //     if (sortBy.type === 'name') {
-            //         booksToDisplay.sort(((t1, t2) => t1.name.localeCompare(t2.name) * sortBy.desc))
-            //     } else {
-            //         booksToDisplay.sort(((t1, t2) => (t1[sortBy.type] - t2[sortBy.type]) * sortBy.desc))
-            //     }
-            // }
+                let booksToDisplay = books.slice()
                 const pageCount = Math.ceil(booksToDisplay.length / PAGE_SIZE)
                 if (filterBy.pageIdx !== undefined) {
-                    let start = filterBy.pageIdx * PAGE_SIZE // 0 , 3 , 6 , 9
+                    let start = filterBy.pageIdx * PAGE_SIZE 
                     booksToDisplay = booksToDisplay.slice(start, start + PAGE_SIZE)
                 }
                 booksData.pageCount = pageCount
@@ -70,26 +38,8 @@ function query(filterBy = {}, sortBy = {}) {
 function getById(bookId) {
     return storageService.get(STORAGE_KEY, bookId)
 }
-function remove(bookId) {
-    return storageService.remove(STORAGE_KEY, bookId)
-
-}
-function save(book) {
-    if (book._id) {
-        return storageService.put(STORAGE_KEY, book)
-            .then((savedBook) => {
-                return savedBook
-            })
-    } else {
-        return storageService.post(STORAGE_KEY, book)
-            .then((savedBook) => {
-                return savedBook
-            })
-    }
-}
 
 function queryWishList(sortBy={}) {
-    console.log('sortBy:', sortBy)
         return storageService.query('wishListDB')  
         .then(books =>{
              if (sortBy.type) {
@@ -114,16 +64,6 @@ function removeFromWishList(bookId){
     return storageService.remove('wishListDB', bookId)
 }
 
-function getEmptyBook() {
-    return {
-        name: '',
-        inStock: true,
-        price: 0,
-        labels: []
-
-    }
-}
-
 function getDefaultFilter() {
     return { title: '',  price: '', pageIdx:0 }
 }
@@ -131,8 +71,6 @@ function getDefaultFilter() {
 function getDefaultSort() {
     return { type: '', desc: 1 }
 }
-
-
 
 
 // ( async function () {
